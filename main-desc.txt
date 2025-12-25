@@ -1,0 +1,17 @@
+Project: Alt-ADB
+Owner: ferrydamien9-ux
+License: GPL-3.0
+
+DESCRIPTION:
+This is an alternative Android Debug Bridge (ADB) toolset designed 
+with a focus on user experience (UX). It allows for easy device 
+discovery and management without the complexity of the standard 
+Google ADB command line.
+
+CORE FEATURES:
+- Automated device detection
+- Clean, readable status updates
+- Lightweight Python implementation
+
+PUSH HISTORY:
+- Initial commit: Core device discovery logic added.
