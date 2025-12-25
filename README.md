@@ -1,16 +1,21 @@
-# Alt-ADB Python Tool
+# Alt-ADB 📱
+**Repository:** [ferrydamien9-ux/Alt-ADB](https://github.com/ferrydamien9-ux/Alt-ADB)
 
-A lightweight alternative to standard ADB command-line tools, built using `adbutils`. This project allows for programmatic interaction with Android devices for automation and monitoring.
+An alternative, lightweight implementation for interacting with Android Debug Bridge (ADB). This project aims to simplify device management through a cleaner, more intuitive interface than the standard CLI.
 
-## 🚀 Features
-* **Auto-Discovery:** Automatically lists all connected Android devices.
-* **Device Info:** Fetches model and serial information without the full Android SDK.
-* **Screenshots:** Quickly capture and save device screens locally.
+## 🛠 Features
+* **Zero-Config Discovery:** Instantly find connected devices over USB or Wi-Fi.
+* **Simplified Interaction:** Python-based wrappers for complex ADB commands.
+* **UX Driven:** Designed to be human-readable and easy to integrate into larger workflows.
 
-## 🛠 Installation
+## 🚀 Getting Started
 
-1. **Clone the repository:**
-   ```bash
-   git clone [https://github.com/YOUR_USERNAME/alt-adb-project.git](https://github.com/YOUR_USERNAME/alt-adb-project.git)
-   cd alt-adb-project
-   
+### Prerequisites
+* Python 3.8+
+* ADB installed on your system (optional if using pure-python libraries)
+
+### Installation
+```bash
+git clone [https://github.com/ferrydamien9-ux/Alt-ADB.git](https://github.com/ferrydamien9-ux/Alt-ADB.git)
+cd Alt-ADB
+pip install -r requirements.txt
