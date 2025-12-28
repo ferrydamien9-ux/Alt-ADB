@@ -1,20 +1,13 @@
-# Python bytecode and cache
+# Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
 *$py.class
 
-# Environments
-.venv/
-venv/
-ENV/
+# Distribution / build folders
+dist/
+build/
+*.spec
 
-# OS generated files
-.DS_Store
-Thumbs.db
-
-# Project specific: Ignore generated screenshots
-screenshot_*.png
-
-# IDEs
-.vscode/
-.idea/
+# Local environment files
+.env
+.venv
