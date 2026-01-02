@@ -1,6 +1,7 @@
 Project: Alt-ADB
 Owner: ferrydamien9-ux
 License: GPL-3.0
+Version: 1.5.0
 
 DESCRIPTION:
 This is an alternative Android Debug Bridge (ADB) toolset designed 
