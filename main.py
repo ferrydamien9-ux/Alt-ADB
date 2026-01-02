@@ -1,61 +1,69 @@
 import os
 import sys
+import subprocess
 
-# Alt-ADB v1.0.1 - The Alternative Android Debug Bridge
-# Released: Dec 2025
-
-def clear_screen():
-    os.system('cls' if os.name == 'nt' else 'clear')
+# Alt-ADB v1.5.0 - The "Bridge" Update
+# Released: Jan 2026
 
 def show_banner():
-    print("=" * 40)
-    print("      Alt-ADB v1.0.1 (STABLE)       ")
-    print("   Created for GitHub Deployment    ")
-    print("=" * 40)
-    print("Type 'help' for commands or 'exit' to quit.")
+    print("=" * 45)
+    print("      Alt-ADB v1.5.0 - BRIDGE UPDATE      ")
+    print("   Full Command Execution Enabled (BETA)  ")
+    print("=" * 45)
+
+def run_adb(command):
+    """Internal function to bridge Alt-ADB to the system ADB"""
+    try:
+        # This attempts to run the command through the system's PATH
+        result = subprocess.run(['adb'] + command.split(), capture_output=True, text=True)
+        if result.returncode == 0:
+            print(result.stdout)
+        else:
+            print(f"ADB Error: {result.stderr}")
+    except FileNotFoundError:
+        print("Error: 'adb.exe' not found in system PATH.")
+        print("Please install Android Platform Tools to use Bridge Mode.")
 
 def main():
-    clear_screen()
     show_banner()
     
     while True:
         try:
-            # Interactive command prompt
-            user_input = input("\nalt-adb> ").strip().lower()
+            user_input = input("\nalt-adb v1.5.0> ").strip()
 
-            if user_input in ["exit", "quit"]:
-                print("Shutting down Alt-ADB. Goodbye!")
+            if user_input.lower() in ["exit", "quit"]:
                 break
             
-            elif user_input == "help":
-                print("\nAvailable Commands:")
-                print(" - devices : List connected Android devices")
-                print(" - reboot  : Reboot the target device")
-                print(" - version : Show version info")
-                print(" - help    : Show this menu")
-                print(" - exit    : Close the program")
+            elif user_input.lower() == "help":
+                print("\nv1.5.0 Commands:")
+                print(" - devices   : Show connected hardware")
+                print(" - shell     : Enter device bash shell")
+                print(" - logcat    : View real-time device logs")
+                print(" - install   : Install an .apk (Usage: install app.apk)")
+                print(" - exit      : Close Alt-ADB")
 
-            elif user_input == "devices":
-                print("\n[Scanning USB Ports...]")
-                # Placeholder for future USB logic
-                print("Result: No devices authorized or connected.")
+            # BRIDGE LOGIC: Directly passing commands to the bridge
+            elif user_input.lower() == "devices":
+                run_adb("devices")
+            
+            elif user_input.lower() == "shell":
+                print("Entering remote shell... (Type 'exit' to return to Alt-ADB)")
+                os.system("adb shell")
 
-            elif user_input == "version":
-                print("\nAlt-ADB Version: 1.0.1")
-                print("Build: Python-Stable-Web")
-
-            elif user_input == "reboot":
-                print("\nAttempting to send reboot signal...")
-                print("Error: Target device not found.")
+            elif user_input.lower().startswith("install "):
+                apk_path = user_input.split(" ")[1]
+                run_adb(f"install {apk_path}")
 
             elif not user_input:
                 continue
 
             else:
-                print(f"\nUnknown command: '{user_input}'")
+                # If it's an unknown command, try passing it directly to ADB
+                print(f"Forwarding '{user_input}' to system bridge...")
+                run_adb(user_input)
 
         except KeyboardInterrupt:
-            print("\nForce closing...")
+            print("\nSession Terminated.")
             sys.exit()
 
 if __name__ == "__main__":
