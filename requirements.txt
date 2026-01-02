@@ -1,2 +1,3 @@
 adbutils
 Pillow
+colorama==0.4.6
